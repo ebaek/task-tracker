@@ -21,6 +21,10 @@ connection.once('open', () => {
     console.log('Successfully connected to MongoDB database')
 })
 
+// routers
+const tasksRouter = require('./routes/tasks');
+app.use('/tasks', tasksRouter);
+
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 })
