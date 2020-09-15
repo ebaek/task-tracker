@@ -23,6 +23,14 @@ export default function TasksList() {
             .catch(err => console.log(err));
     };
 
+    const deleteTask = (id) => {
+        axios.delete(`http://localhost:5000/tasks/${id}`)
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err));
+        
+        window.location.reload();
+    }
+
     // returns urgency status of the task 
     const calculateDueStatus = (date, complete) => {
         if (complete) return 'success';
@@ -44,12 +52,17 @@ export default function TasksList() {
     }
 
     const formatTasks = () => {
-        console.log(taskList)
         return taskList.map( (task, i) => {
-            const { complete, dueDate, description, name } = task;
+            const { complete, dueDate, description, name, _id } = task;
             return (
                 <Card key={i} border={calculateDueStatus(dueDate, complete)} style={{ margin: '1rem' }}>
-                    <Card.Header as="h5">{formatDate(dueDate)}</Card.Header>
+
+                    <Card.Header as="h5">
+                        {formatDate(dueDate)}
+                        <button type="button" className="close" aria-label="Close" onClick={() => deleteTask(_id)}>
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </Card.Header>
                     <Card.Body>
                         <Card.Title>{name}</Card.Title>
                         <Card.Text> {description} </Card.Text>
