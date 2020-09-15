@@ -24,6 +24,7 @@ export default function CreateTask() {
             .then(res => console.log(res.data));
         
         clearState();
+        window.location.reload();
     }
 
     const clearState = () => {
@@ -35,7 +36,7 @@ export default function CreateTask() {
     return (
         <div>
             <Nav.Link data-testid="create-task-button" onClick={handleShow}>
-                Create Task
+                Create
             </Nav.Link>
 
             <Modal

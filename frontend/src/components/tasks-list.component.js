@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import CompleteButton from './complete-button.component';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 
 import axios from 'axios';
 
@@ -11,6 +11,12 @@ export default function TasksList() {
         fetchTasks();
     }, []);
 
+    const formatDate = (date) => {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        date = new Date(date);
+        return date.toLocaleDateString("en-US", options);
+    }
+
     const fetchTasks = () => {
         axios.get('http://localhost:5000/tasks/')
             .then(res => setTaskList(res.data))
@@ -18,7 +24,9 @@ export default function TasksList() {
     };
 
     // returns urgency status of the task 
-    const calculateDueStatus = (date) => {
+    const calculateDueStatus = (date, complete) => {
+        if (complete) return 'success';
+
         date = new Date(date)
         const now = new Date();
 
@@ -36,17 +44,23 @@ export default function TasksList() {
     }
 
     const formatTasks = () => {
-        return taskList.map( ({complete, dueDate, description, name}, i) => 
-            <Card key={i} bg={calculateDueStatus(dueDate)}>
-                <Card.Header as="h5">{dueDate}</Card.Header>
-                <Card.Body>
-                    <Card.Title>{name}</Card.Title>
-                    <Card.Text> {description} </Card.Text>
+        console.log(taskList)
+        return taskList.map( (task, i) => {
+            const { complete, dueDate, description, name } = task;
+            return (
+                <Card key={i} border={calculateDueStatus(dueDate, complete)} style={{ margin: '1rem' }}>
+                    <Card.Header as="h5">{formatDate(dueDate)}</Card.Header>
+                    <Card.Body>
+                        <Card.Title>{name}</Card.Title>
+                        <Card.Text> {description} </Card.Text>
 
-                    <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-            </Card>
-        )
+                        {!complete &&
+                            <CompleteButton task={task}/>
+                        }
+                    </Card.Body>
+                </Card>
+                )
+            })
     }
 
     return (
