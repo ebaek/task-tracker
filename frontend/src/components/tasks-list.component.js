@@ -42,7 +42,8 @@ export default function TasksList() {
 
         const sameYear = date.getFullYear() === now.getFullYear();
         const sameMonth = date.getMonth() === now.getMonth();
-        const dueTodayOrTom = date.getDate() === now.getDate() || date.getDate() == now.getDate() + 1
+        const dueTodayOrTom = date.getDate() === now.getDate() || date.getDate() === now.getDate() + 1
+
         
         if (sameYear &&  sameMonth && dueTodayOrTom) {
             return 'warning';
