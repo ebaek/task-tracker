@@ -1,0 +1,25 @@
+{
+  "name": "task-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "concurrently": "^5.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "client": "cd frontend && npm start",
+    "server": "cd backend && node server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ebaek/task-tracker.git"
+  },
+  "author": " <Esther Baek>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ebaek/task-tracker/issues"
+  },
+  "homepage": "https://github.com/ebaek/task-tracker#readme"
+}

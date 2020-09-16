@@ -34,7 +34,7 @@ export default function TasksList() {
     }
 
     // returns urgency status of the task 
-    const calculateDueStatus = async (date, complete) => {
+    const calculateDueStatus = (date, complete) => {
         if (complete) return 'success';
 
         date = new Date(date)
