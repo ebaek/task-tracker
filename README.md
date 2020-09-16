@@ -11,7 +11,12 @@ Testing: React Testing Library, Jest
 
 # Running the Application
 To run the frontend and backend concurrently:
-  At the root level, run the command `npm i` to install the app dependencies, then run `npm run dev`  
+  1) Install dependencies
+      - cd frontend && npm i
+      - cd backend && npm i
+  2) At the root level run:
+      - `npm run dev`
+    
   To run locally, go to http://localhost:3000
   
 Backend: runs on port 5000
