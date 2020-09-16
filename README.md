@@ -14,6 +14,9 @@ To run the frontend and backend concurrently:
   1) Install dependencies
       - cd frontend && npm i
       - cd backend && npm i
+  2) In the backend folder, create a .env file.
+  3) In the .env file, insert MongoDB server url:
+      - `ATLAS_URI=[put your MongoDB URI here]`
   2) At the root level run:
       - `npm run dev`
     
