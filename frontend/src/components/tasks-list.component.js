@@ -34,7 +34,7 @@ export default function TasksList() {
     }
 
     // returns urgency status of the task 
-    const calculateDueStatus = (date, complete) => {
+    const calculateDueStatus = async (date, complete) => {
         if (complete) return 'success';
 
         date = new Date(date)
@@ -109,12 +109,12 @@ export default function TasksList() {
     }
 
     return (
-        <div className="container">
+        <div data-testid="tasks-list-wrapper" className="container">
             <div style={{ margin: '1rem' }}>
-                <Button variant="outline-secondary" onClick={() => setSearchType('')}>All</Button>{' '}
-                <Button variant="outline-success" onClick={() => setSearchType('complete')}>Completed</Button>{' '}
-                <Button variant="outline-warning" onClick={() => setSearchType('warning')}>Due Soon</Button>{' '}
-                <Button variant="outline-danger" onClick={() => setSearchType('danger')}>Overdue</Button>{' '}
+                <Button data-testid="all-button" variant="outline-secondary" onClick={() => setSearchType('')}>All</Button>{' '}
+                <Button data-testid="completed-button" variant="outline-success" onClick={() => setSearchType('complete')}>Completed</Button>{' '}
+                <Button data-testid="due-button" variant="outline-warning" onClick={() => setSearchType('warning')}>Due Soon</Button>{' '}
+                <Button data-testid="overdue-button" variant="outline-danger" onClick={() => setSearchType('danger')}>Overdue</Button>{' '}
             </div>
 
             {formatTasks(searchType)}

@@ -5,7 +5,7 @@ import CreateTask from '../components/create-task.component';
 
 export default function NavbarComponent() {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg" data-testid="navbar-wrapper">
             <Navbar.Brand>IBM Task Manager</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

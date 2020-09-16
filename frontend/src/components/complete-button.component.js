@@ -27,7 +27,7 @@ export default function CompleteButton(task) {
 
     return (
         <div>
-            <Button variant="secondary" onClick={handleSubmit}>Mark as Complete</Button>
+            <Button data-testid="complete-button" variant="secondary" onClick={handleSubmit}>Mark as Complete</Button>
         </div>
     );
 }

@@ -63,17 +63,17 @@ export default function CreateTask() {
                 <Modal.Body>
                     <form>
                         <label>Task Name</label>
-                        <input type="text" className="form-control" id="taskName" placeholder="Enter task name" onChange={ ({ target })=> setName(target.value)}/>
+                        <input type="text" data-testid="task-name" className="form-control" id="taskName" placeholder="Enter task name" onChange={ ({ target })=> setName(target.value)}/>
                         
                         <br></br>
 
                         <label>Task Due Date</label>
-                        <input type="date" className="form-control" id="taskDate" placeholder="Enter task due date" onChange={ ({target}) => setDueDate(target.value)}/>
+                        <input type="date" data-testid="task-date" className="form-control" id="taskDate" placeholder="Enter task due date" onChange={ ({target}) => setDueDate(target.value)}/>
                         
                         <br></br>
 
                         <label>Task Description</label>
-                        <textarea className="form-control" id="task-description" onChange={ ({ target }) => setDescription(target.value)}/>
+                        <textarea className="form-control" data-testid="task-description" id="task-description" onChange={ ({ target }) => setDescription(target.value)}/>
                     </form>
                 </Modal.Body>
 
