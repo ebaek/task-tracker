@@ -14,10 +14,12 @@ export default function CreateTask() {
     const handleShow = () => setShow(true);
 
     const submit = () => {
+        const formattedDueDate = formatDate(dueDate)
+
         const task = {
             name,
             description,
-            dueDate
+            dueDate: formattedDueDate,
         }
         
         axios.post('http://localhost:5000/tasks/add', task)
@@ -25,13 +27,21 @@ export default function CreateTask() {
         
         clearState();
         window.location.reload();
-    }
+    };
 
     const clearState = () => {
         setName('');
         setDescription('');
         setDueDate(new Date());
-    }
+    };
+
+    const formatDate = (dateString) => {
+        const split = dateString.split("-")
+        const year = split[0]
+        const month = split[1]
+        const date = split[2]
+        return month + "-" + date + "-" + year;
+    };
 
     return (
         <div>
