@@ -13,7 +13,11 @@ app.use(cors());
 app.use(express.json()) // parse json
 
 // mongodb configurations
-const uri = process.env.ATLAS_URI;
+// const uri = process.env.ATLAS_URI;
+
+// local uri
+const uri = "mongodb://mongo:27017/tasks-db";
+
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
 
